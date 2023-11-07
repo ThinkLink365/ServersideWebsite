@@ -1,0 +1,112 @@
+<%- include('partials/head.ejs') %>
+    <H1>Bookings</H1>
+    <form method="post" action="/Booking" autocomplete="on"  target="_blank">
+            <p>
+                <label>Name:<input  required type="text" name="name" placeholder="Enter your name"></label>
+            </p>
+            <p>
+                <label>Email address:<input required type="email" name="email" placeholder="Enter your email"></label>
+            </p>
+            <p>
+                <label>Contact Number:
+                <input name="contact_number"
+                required
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number"
+                maxlength = "10"
+                minlength="10"
+                placeholder="Enter Contact Number">
+            </label>
+            </p>
+            <p>     
+                <label>Date:<input required type="date" name="date"  id="date">
+                <script>
+                    const todaysDate = new Date().toISOString().split('T')[0];
+                  
+                    document.getElementById('date').min = todaysDate;
+                </script>
+                </label>
+                  
+            </p>
+            <p>
+                <label>Time:
+                <select required name="time">
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                  </select>
+                </label>
+            </p>
+            <p>
+                <label>Card Holder Name:<input required type="text" name="card_name" placeholder="Enter cardholder name"></label>
+            </p>
+            <p>
+                <label>Card Number:
+                <input name="card_number"
+                required
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number"
+                maxlength = "16"
+                minlength="16"
+                placeholder="Enter Card Number">
+            </label>
+            </p>
+            <p>
+                <label>Expiry Month:
+                <select  required name="card_month">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </label>
+            </p>
+            <p>
+                <label>Expiry Year:
+                <select  required name="card_year">
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                  </select>
+                </label>
+            </p>
+            <p>
+                <label>CVV:
+                <input name="cvv"
+                required
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number"
+                maxlength = "3"
+                minlength="3"
+                placeholder="Enter CVV">
+                </label>
+            </p>
+        <p>
+            <button type="submit">Click to submit</button>
+            <button type="reset">Click to reset</button>
+        </p>
+    
+    </form>
+<%- include('partials/foot.ejs') %>
