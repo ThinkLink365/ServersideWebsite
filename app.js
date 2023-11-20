@@ -21,27 +21,6 @@ connect.then((db) => {
     console.log("Connected correctly to server");
 }, (err) => { console.log(err); });
 
-app.post("/Booking", function(req, res){
-  let newBooking = new booking({
-      name: req.body.name,
-      email: req.body.email,
-      contactNumber: req.body.contact_number,
-      date: req.body.date,
-      time: req.body.time,
-      card_name: req.body.card_name,
-      card_number: req.body.card_number,
-      card_month: req.body.card_month,
-      card_year: req.body.card_year,
-      cvv: req.body.cvv,
-  });
-  newBooking.save()
-  .then((savedBooking) =>{
-    booking.find()
-    .then((bookingsfound) => {
-      res.render('viewBookings',{'bookingDetails': bookingsfound, title:'View Booking'})
-    })
-    })
-})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
