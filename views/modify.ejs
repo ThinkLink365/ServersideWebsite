@@ -1,3 +1,121 @@
 <%- include('partials/head.ejs') %>
 <h1>Select a booking to modify</h1>
+
+    <form method="post" action="/booking/edited/<%= bookings._id %>" autocomplete="on" target="_blank">
+            <p>
+                <label>Name:<input  required type="text" name="name" placeholder="Enter your name" value="<%= bookings.name %>"></label>
+            </p>
+            <p>
+                <label>Email address:<input required type="email" name="email" placeholder="Enter your email" value="<%= bookings.email  %>"></label>
+            </p>
+            <p>
+                <label>Contact Number:
+                <input name="contact_number"
+                required
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number"
+                maxlength = "10"
+                minlength="10"
+                placeholder="Enter Contact Number"
+                value="<%= bookings.contactNumber  %>">
+            </label>
+            </p>
+            <p>     
+                <label>Date:
+                    <input required type="date" name="date" id="date" value="<%= bookings.date %>">
+                <script>
+                    const todaysDate = new Date().toISOString().split('T')[0];
+                  
+                    document.getElementById('date').min = todaysDate;
+                </script>
+                </label>
+                  
+            </p>
+            <p>
+                <label>Time:
+                    <select required name="time">
+                        <option value="09:00" <%= bookings.time === '09:00' ? 'selected' : '' %>>09:00</option>
+                        <option value="10:00" <%= bookings.time === '10:00' ? 'selected' : '' %>>10:00</option>
+                        <option value="11:00" <%= bookings.time === '11:00' ? 'selected' : '' %>>11:00</option>
+                        <option value="12:00" <%= bookings.time === '12:00' ? 'selected' : '' %>>12:00</option>
+                        <option value="13:00" <%= bookings.time === '13:00' ? 'selected' : '' %>>13:00</option>
+                        <option value="14:00" <%= bookings.time === '14:00' ? 'selected' : '' %>>14:00</option>
+                        <option value="15:00" <%= bookings.time === '15:00' ? 'selected' : '' %>>15:00</option>
+                        <option value="16:00" <%= bookings.time === '16:00' ? 'selected' : '' %>>16:00</option>
+                        <option value="17:00" <%= bookings.time === '17:00' ? 'selected' : '' %>>17:00</option>
+                        <option value="18:00" <%= bookings.time === '18:00' ? 'selected' : '' %>>18:00</option>
+                        <option value="19:00" <%= bookings.time === '19:00' ? 'selected' : '' %>>19:00</option>
+                        <option value="20:00" <%= bookings.time === '20:00' ? 'selected' : '' %>>20:00</option>
+                        <option value="21:00" <%= bookings.time === '21:00' ? 'selected' : '' %>>21:00</option>
+                    </select>
+                </label>
+                
+                
+            </p>
+            <p>
+                <label>Card Holder Name:<input required type="text" name="card_name" placeholder="Enter cardholder name" value="<%= bookings.card_name  %>"></label>
+            </p>
+            <p>
+                <label>Card Number:
+                <input name="card_number"
+                required
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number"
+                maxlength = "16"
+                minlength="16"
+                placeholder="Enter Card Number"
+                value="<%= bookings.card_number  %>">
+            </label>
+            </p>
+            <p>
+                <label>Expiry Month:
+                <select  required name="card_month">
+                    <option value="January" <%= bookings.card_month === 'january' ? 'selected' : '' %>>January</option>
+                    <option value="February" <%= bookings.card_month === 'february' ? 'selected' : '' %>>February</option>
+                    <option value="March" <%= bookings.card_month === 'farch' ? 'selected' : '' %>>March</option>
+                    <option value="April" <%= bookings.card_month === 'april' ? 'selected' : '' %>>April</option>
+                    <option value="May" <%= bookings.card_month === 'may' ? 'selected' : '' %>>May</option>
+                    <option value="June" <%= bookings.card_month === 'june' ? 'selected' : '' %>>June</option>
+                    <option value="July" <%= bookings.card_month === 'july' ? 'selected' : '' %>>July</option>
+                    <option value="August" <%= bookings.card_month === 'august' ? 'selected' : '' %>>August</option>
+                    <option value="September"<%= bookings.card_month === 'september' ? 'selected' : '' %>>September</option>
+                    <option value="October"<%= bookings.card_month === 'october' ? 'selected' : '' %>>October</option>
+                    <option value="November" <%= bookings.card_month === 'november' ? 'selected' : '' %>>November</option>
+                    <option value="December" <%= bookings.card_month === 'december' ? 'selected' : '' %>>December</option>
+                  </select>
+                </label>
+            </p>
+            <p>
+                <label>Expiry Year:
+                    <select required name="card_year">
+                        <option value="2023" <%= bookings.card_year === 2023 ? 'selected' : '' %>>2023</option>
+                        <option value="2024" <%= bookings.card_year === 2024 ? 'selected' : '' %>>2024</option>
+                        <option value="2025" <%= bookings.card_year === 2025 ? 'selected' : '' %>>2025</option>
+                        <option value="2026" <%= bookings.card_year === 2026 ? 'selected' : '' %>>2026</option>
+                        <option value="2027" <%= bookings.card_year === 2027 ? 'selected' : '' %>>2027</option>
+                        <option value="2028" <%= bookings.card_year === 2028 ? 'selected' : '' %>>2028</option>
+                        <option value="2029" <%= bookings.card_year === 2029 ? 'selected' : '' %>>2029</option>
+                    </select>
+                </label>
+                
+            </p>
+            <p>
+                <label>CVV:
+                <input name="cvv"
+                required
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number"
+                maxlength = "3"
+                minlength="3"
+                placeholder="Enter CVV"
+                value="<%= bookings.cvv  %>">
+                </label>
+            </p>
+        <p>
+            <input type="hidden" name="id" value="<%= bookings._id %>">
+            <button type="submit">Click to submit</button>
+            <button type="reset">Click to reset</button>
+        </p>
+    
+    </form>
 <%- include('partials/foot.ejs') %>

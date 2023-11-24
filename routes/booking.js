@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
   res.render('booking',{ title: 'Booking' });
 });
 
+router.get('/search', function(req, res){
+  res.render('search', {title: 'Search'});
+});
+
 router.post("/Booking", function(req, res){
   let newBooking = new booking({
       name: req.body.name,
@@ -40,7 +44,7 @@ router.get('/view', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-router.get('/delete', async(req, res, next) {
+router.get('/delete', async(req, res,) => {
     res.render('delete', { title: 'Delete' });
     try {
       const bookings= await booking.find()
@@ -50,15 +54,40 @@ router.get('/delete', async(req, res, next) {
       console.error(error);
       res.status(500).send('Server Error');
     }
+  
   });
-router.get('/modify', async (req, res) => {
+ router.get('/modify', async (req, res) => {
+    const bookingID = req.query.bookID;
+    console.log(bookingID)
+  res.redirect(`/booking/modify/${bookingID}`)
+ });
+
+  router.get('/modify/:id', async (req, res) => {
+    
     try {
-      const bookings= await booking.find()
+      const bookings = await booking.findById(req.params.id)
+      console.log(bookings)
+
           res.render('modify', { bookings, title: 'Modify' });
       
     } catch (error) {
       console.error(error);
       res.status(500).send('Server Error');
+
     }
   });
+      
+  router.post('/edited/:id', async (req, res) => {
+    const bookingID = req.body.id;
+  
+    try {
+      const updatedBooking = await booking.findByIdAndUpdate(bookingID, req.body, { new: true });
+  
+      res.redirect('/booking/view');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Server Error');
+    }
+  
+});
 module.exports = router;

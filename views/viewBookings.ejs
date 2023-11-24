@@ -1,7 +1,5 @@
 <%- include('partials/head.ejs') %>
     <H1>View Bookings</H1>
-    <a href="modify">Modify Bookings</a>
-    <a href="delete">Delete Bookings</a>
     <table>
         <thead>
           <tr> 
@@ -10,19 +8,24 @@
             <th>Contact Number</th>
             <th>Date</th>
             <th>Time</th>
+            <th>Edit Booking</th>
+            <th>Delete Booking</th>
           </tr>
         </thead>
     
         <tbody>
           <% for(var i=0; i < bookingDetails.length; i++) { %>
          <tr>
-    
+          <form action="/booking/modify" method="get">
            <td><%= bookingDetails[i].name %></td>
            <td><%= bookingDetails[i].email %></td>
            <td><%= bookingDetails[i].contactNumber %></td>
            <td><%= bookingDetails[i].date %></td>
            <td><%= bookingDetails[i].time %></td>
-  
+           <td><button type="submit">Modify Booking</button></td>
+           <input type="hidden" name="bookID" value="<%= bookingDetails[i]._id %>">
+           
+          </form>
          </tr>
       <% } %>
         </tbody>
