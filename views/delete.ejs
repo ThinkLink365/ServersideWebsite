@@ -1,3 +1,7 @@
 <%- include('partials/head.ejs') %>
-<H1>Select a booking to delete</H1>
+<h1>Delete booking for <%=bookings.name %></h1>
+<form method="post" action="/booking/removed/<%= bookings._id %>" autocomplete="on" target="_blank">
+<input type="hidden" name="id" value="<%= bookings._id %>">
+            <button type="submit">Delete Booking</button>
+        </form>
 <%- include('partials/foot.ejs') %>

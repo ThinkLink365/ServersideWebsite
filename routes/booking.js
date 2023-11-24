@@ -45,20 +45,12 @@ router.get('/view', async (req, res) => {
   }
 });
 router.get('/delete', async(req, res,) => {
-    res.render('delete', { title: 'Delete' });
-    try {
-      const bookings= await booking.find()
-          res.render('modify', { bookings, title: 'Modify' });
-      
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Server Error');
-    }
+  const bookingID = req.query.bookingID;
+res.redirect(`/booking/delete/${bookingID}`)
   
   });
  router.get('/modify', async (req, res) => {
     const bookingID = req.query.bookID;
-    console.log(bookingID)
   res.redirect(`/booking/modify/${bookingID}`)
  });
 
@@ -66,7 +58,6 @@ router.get('/delete', async(req, res,) => {
     
     try {
       const bookings = await booking.findById(req.params.id)
-      console.log(bookings)
 
           res.render('modify', { bookings, title: 'Modify' });
       
@@ -87,7 +78,28 @@ router.get('/delete', async(req, res,) => {
     } catch (error) {
       console.error(error);
       res.status(500).send('Server Error');
-    }
+    }});
   
-});
+    router.get('/delete/:id', async (req, res) => {
+      try {
+        const bookings = await booking.findById(req.params.id);
+        res.render('delete', { bookings, title: 'Delete' });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+      }
+    });
+    
+    router.post('/removed/:id', async (req, res) => {
+      try {
+        const deletedBooking = await booking.findByIdAndDelete(req.params.id);
+    
+        // Redirect to the view bookings page after successful deletion
+        res.redirect('/booking/view');
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+      }
+    });
+
 module.exports = router;

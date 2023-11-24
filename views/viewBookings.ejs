@@ -24,8 +24,11 @@
            <td><%= bookingDetails[i].time %></td>
            <td><button type="submit">Modify Booking</button></td>
            <input type="hidden" name="bookID" value="<%= bookingDetails[i]._id %>">
-           
           </form>
+          <form action="/booking/delete" method="get">
+           <td><button type="submit">Delete Booking</button></td>
+           <input type="hidden" name="bookingID" value="<%= bookingDetails[i]._id %>">
+           </form>
          </tr>
       <% } %>
         </tbody>
