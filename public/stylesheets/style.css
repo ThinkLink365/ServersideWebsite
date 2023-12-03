@@ -168,6 +168,10 @@ header nav a:visited {
 
 button{
 	color: #FFFFFF;
+	display:inline-block;
+	border: 5px outset #98416D;
+	background-color: #7D3377;
+	text-align: center;
 }
 #date{
 	color: #FFFFFF;
@@ -179,4 +183,7 @@ input{
 }
 select{
 	color: #FFFFFF;
+}
+#center{
+	text-align: center;
 }

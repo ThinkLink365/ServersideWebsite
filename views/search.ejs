@@ -2,9 +2,10 @@
 <h1>Search for a booking</h1>
 <h2>Enter the name of the booking you would like to find</h2>
 <form action="/booking/search" method="post">
-    <p>
+    <div id="center"><p>
         <label>Name:<input  required type="text" name="searchName" placeholder="Enter the name"></label>
     </p>
     <button type="submit">Search</button>
+    </div>
     </form>
 <%- include('partials/foot.ejs') %>

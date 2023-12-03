@@ -9,18 +9,30 @@
             </p>
             <p>
                 <label>Contact Number:
-                <input name="contact_number"
-                required
-                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                type = "number"
-                maxlength = "10"
-                minlength="10"
-                placeholder="Enter Contact Number">
-            </label>
+                    <!-- Input validation: Truncate input if it exceeds the maximum length -->
+                    <!-- This script ensures that the input value does not exceed the specified maximum length -->
+                    <!-- It is triggered on every input event in the associated input field -->
+                    <input
+                        name="contact_number"
+                        required
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        type="number"
+                        maxlength="10"
+                        minlength="10"
+                        placeholder="Enter Contact Number"
+                    />
+                </label>
             </p>
+            
             <p>     
                 <label>Date:<input required type="date" name="date"  id="date">
+                <!-- JavaScript to set the minimum date of the 'date' input field to today's date -->
+                <!-- This script retrieves today's date and sets it as the minimum allowed date for the input field -->
                 <script>
+                    /*
+                    Get today's date in the format 'YYYY-MM-DD'
+                    Set the minimum date for the 'date' input field to today
+                    */  
                     const todaysDate = new Date().toISOString().split('T')[0];
                   
                     document.getElementById('date').min = todaysDate;
@@ -52,6 +64,9 @@
             </p>
             <p>
                 <label>Card Number:
+                     <!-- Input validation: Truncate input if it exceeds the maximum length -->
+                    <!-- This script ensures that the input value does not exceed the specified maximum length -->
+                    <!-- It is triggered on every input event in the associated input field -->
                 <input name="card_number"
                 required
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -94,6 +109,9 @@
             </p>
             <p>
                 <label>CVV:
+                     <!-- Input validation: Truncate input if it exceeds the maximum length -->
+                    <!-- This script ensures that the input value does not exceed the specified maximum length -->
+                    <!-- It is triggered on every input event in the associated input field -->
                 <input name="cvv"
                 required
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"

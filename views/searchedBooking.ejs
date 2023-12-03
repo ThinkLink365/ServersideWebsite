@@ -1,45 +1,57 @@
 <%- include('partials/head.ejs') %>
-    <h1>Bookings for <%= query %></h1>
-    <table>
-        <thead>
-            <tr> 
-              <th>Name</th>
-              <th>Email Address</th>
-              <th>Contact Number</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Edit Booking</th>
-              <th>Delete Booking</th>
-            </tr>
-          </thead>
+
+<!-- Main heading displaying the name for which bookings are shown -->
+<h1>Bookings for <%= query %></h1>
+
+<!-- Subheading displaying the number of bookings for the specified name -->
+<h2>There are <%= bookings.length %> bookings for <%= query %></h2>
+
+<!-- Table to display booking details -->
+<table>
+
+    <!-- Table header with column names -->
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email Address</th>
+            <th>Contact Number</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Edit Booking</th>
+            <th>Delete Booking</th>
+        </tr>
+    </thead>
+
+    <!-- Table body with booking details -->
     <tbody>
         <% bookings.forEach(booking => { %>
             <tr>
+
+                <!-- Form for modifying a booking -->
                 <form action="/booking/modify" method="get">
-                    <td>
-                        <%= booking.name %>
-                    </td>
-                    <td>
-                        <%= booking.email %>
-                    </td>
-                    <td>
-                        <%= booking.contactNumber %>
-                    </td>
-                    <td>
-                        <%= booking.date %>
-                    </td>
-                    <td>
-                        <%= booking.time %>
-                    </td>
+                    <td><%= booking.name %></td>
+                    <td><%= booking.email %></td>
+                    <td><%= booking.contactNumber %></td>
+                    <td><%= booking.date %></td>
+                    <td><%= booking.time %></td>
+
+                    <!-- Button to submit the form for modifying the booking -->
                     <td><button type="submit">Modify Booking</button></td>
+
+                    <!-- Hidden input field to store the booking ID -->
                     <input type="hidden" name="bookID" value="<%= booking._id %>">
                 </form>
+
+                <!-- Form for deleting a booking -->
                 <form action="/booking/delete" method="get">
                     <td><button type="submit">Delete Booking</button></td>
+
+                    <!-- Hidden input field to store the booking ID -->
                     <input type="hidden" name="bookingID" value="<%= booking._id %>">
                 </form>
             </tr>
-            <% }) %>
+        <% }) %>
     </tbody>
 </table>
-    <%- include('partials/foot.ejs') %>
+
+<%- include('partials/foot.ejs') %>

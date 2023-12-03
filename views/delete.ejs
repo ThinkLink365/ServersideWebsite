@@ -1,7 +1,8 @@
 <%- include('partials/head.ejs') %>
 <h1>Delete booking for <%=bookings.name %></h1>
 <form method="post" action="/booking/removed/<%= bookings._id %>" autocomplete="on" target="_blank">
-<input type="hidden" name="id" value="<%= bookings._id %>">
-            <button type="submit">Delete Booking</button>
+<!-- Hidden input field to store the booking ID -->
+    <input type="hidden" name="id" value="<%= bookings._id %>">
+            <div id="center"><button type="submit">Delete Booking</button></div>
         </form>
 <%- include('partials/foot.ejs') %>
